@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Salon Bliss - Premium Beauty Experience</title>
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            color: #333;
+            line-height: 1.6;
+            background-color: #faf7f5;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        /* Header Styles */
+        header {
+            background-color: #ffffff;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+        
+        .logo {
+            height: 60px;
+            width: auto;
+            object-fit: contain;
+            transition: transform 0.3s;
+        }
+        
+        .logo:hover {
+            transform: scale(1.05);
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 30px;
+            position: relative;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #5d4037;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 16px;
+            padding: 5px 0;
+        }
+        
+        .nav-links a:hover {
+            color: #c8a58c;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: #c8a58c;
+            transition: width 0.3s;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(93, 64, 55, 0.7), rgba(93, 64, 55, 0.7)), url('https://images.unsplash.com/photo-1560066984-138dadb4c035?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 85vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            color: #fff;
+            position: relative;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 30px;
+            animation: fadeIn 1.5s ease-out;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+        }
+        
+        .hero p {
+            font-size: 1.4rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+        
+        .btn {
+            display: inline-block;
+            background: #c8a58c;
+            color: #fff;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(200, 165, 140, 0.3);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        
+        .btn:hover {
+            background: #b39178;
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(200, 165, 140, 0.4);
+        }
+        
+        /* Services Section */
+        .section {
+            padding: 90px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 60px;
+        }
+        
+        .section-title h2 {
+            font-size: 2.8rem;
+            color: #5d4037;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 3px;
+            background: #c8a58c;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .section-title p {
+            color: #7d6e63;
+            max-width: 700px;
+            margin: 25px auto 0;
+            font-size: 1.1rem;
+            line-height: 1.8;
+        }
+        
+        .services {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 35px;
+        }
+        
+        .service-card {
+            background: #fff;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(93, 64, 55, 0.08);
+            transition: all 0.4s;
+            position: relative;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 15px 35px rgba(93, 64, 55, 0.15);
+        }
+        
+        .service-img {
+            height: 220px;
+            background-color: #f9f9f9;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
+        
+        .service-img::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            background: linear-gradient(to top, rgba(93, 64, 55, 0.5), transparent);
+        }
+        
+        .service-content {
+            padding: 25px;
+        }
+        
+        .service-content h3 {
+            margin-bottom: 15px;
+            color: #5d4037;
+            font-size: 1.5rem;
+        }
+        
+        .service-content p {
+            color: #7d6e63;
+            margin-bottom: 20px;
+            line-height: 1.7;
+        }
+        
+        .price {
+            color: #c8a58c;
+            font-weight: 700;
+            font-size: 1.3rem;
+            display: block;
+            margin-top: 15px;
+        }
+        
+        /* About Section */
+        .about {
+            background: linear-gradient(to bottom, #faf7f5, #f1e9e2);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .about::before {
+            content: '';
+            position: absolute;
+            top: -100px;
+            right: -100px;
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: rgba(200, 165, 140, 0.1);
+            z-index: 0;
+        }
+        
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .about-img {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 35px rgba(93, 64, 55, 0.15);
+            transition: transform 0.4s;
+        }
+        
+        .about-img:hover {
+            transform: scale(1.03);
+        }
+        
+        .about-img img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: transform 0.5s;
+        }
+        
+        .about-text h3 {
+            font-size: 2rem;
+            color: #5d4037;
+            margin-bottom: 20px;
+        }
+        
+        .about-text p {
+            color: #7d6e63;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+        
+        /* Footer */
+        footer {
+            background: linear-gradient(to right, #5d4037, #7d6e63);
+            color: #fff;
+            padding: 70px 0 30px;
+            position: relative;
+        }
+        
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-section h3 {
+            margin-bottom: 25px;
+            font-size: 1.5rem;
+            color: #c8a58c;
+            position: relative;
+            padding-bottom: 10px;
+        }
+        
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            width: 50px;
+            height: 2px;
+            background: #c8a58c;
+            bottom: 0;
+            left: 0;
+        }
+        
+        .footer-section p, .footer-section li {
+            color: #e5e5e5;
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+        
+        .footer-section ul {
+            list-style: none;
+        }
+        
+        .footer-section a {
+            color: #e5e5e5;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-section a:hover {
+            color: #c8a58c;
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: #e5e5e5;
+            font-size: 0.9rem;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        /* Responsive */
+        @media (max-width: 992px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            
+            .about-content {
+                gap: 40px;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                padding: 15px 0;
+            }
+            
+            .logo {
+                margin-bottom: 15px;
+                height: 50px;
+            }
+            
+            .nav-links {
+                margin-top: 15px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .nav-links li {
+                margin: 0 15px 10px;
+            }
+            
+            .hero {
+                height: auto;
+                padding: 80px 0;
+            }
+            
+            .hero h1 {
+                font-size: 2.3rem;
+            }
+            
+            .hero p {
+                font-size: 1.2rem;
+            }
+            
+            .about-content, .editor-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-img {
+                order: -1;
+            }
+            
+            .section {
+                padding: 70px 0;
+            }
+            
+            .services {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .btn {
+                padding: 12px 30px;
+            }
+            
+            .section-title h2 {
+                font-size: 2.2rem;
+            }
+            
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <a href="#" class="logo">
+                        <img src="logo4.png" alt="Salon Bliss Logo" class="logo">
+                    </a>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#book" class="btn">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Experience Premium Beauty Care</h1>
+            <p>Transform your look and boost your confidence with our expert stylists and aestheticians</p>
+            <a href="#services" class="btn">Explore Services</a>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="section">
+        <div class="container">
+            <div class="section-title">
+                <h2>Our Premium Services</h2>
+                <p>Indulge in our range of beauty treatments designed to pamper and rejuvenate</p>
+            </div>
+            <div class="services">
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('hair.jpeg');"></div>
+                    <div class="service-content">
+                        <h3>Hair Styling</h3>
+                        <p>Professional haircuts, coloring, and styling from our expert stylists.</p>
+                        <span class="price">From ksh.500</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url(french.jpeg);"></div>
+                    <div class="service-content">
+                        <h3>Manicure & Pedicure</h3>
+                        <p>Luxurious nail treatments with premium products for hands and feet.</p>
+                        <span class="price">From ksh.500</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url(less.jpeg);"></div>
+                    <div class="service-content">
+                        <h3>hairdressing</h3>
+                        <p>we provide luxurious hairstyling, cutting, and treating hair <br>to enhance beauty and confidence. <br>It includes a wide range of services such as braiding, cornrows, blow-drying, twists, and other creative styles that keep hair healthy, neat, and fashionable.</p>
+                        <span class="price">From Ksh.800</span>
+                    </div>
+                </div>
+                <div class="service-card">
+                    <div class="service-img" style="background-image: url('face.jpeg');"></div>
+                    <div class="service-content">
+                        <h3>Facial Treatments</h3>
+                        <p>Rejuvenating facials tailored to your skin type and concerns.</p>
+                        <span class="price">From ksh.500</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="section about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Salon Bliss</h2>
+                <p>Discover our story and commitment to excellence in beauty care</p>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Creating Beauty Since 2015</h3>
+                    <p>Salon Bliss was founded with a vision to create a sanctuary where clients can escape the stresses of daily life and emerge feeling beautiful, confident, and rejuvenated.</p>
+                    <p>Our team of licensed professionals stays current with the latest techniques and trends through ongoing education, ensuring you receive the highest quality service.</p>
+                    <p>We use only premium, professional-grade products that are gentle on you and the environment.</p>
+                    <a href="#contact" class="btn">Book Appointment</a>
+                </div>
+                <div class="about-img">
+                    <img src="about.jpeg" alt="Salon Interior">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Salon Bliss</h3>
+                    <p>Providing premium beauty services since 2015. Our mission is to enhance your natural beauty and boost your confidence.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Nairobi, City</p>
+                    <p><i class="fas fa-phone"></i> 0748362035</p>
+                    <p><i class="fas fa-envelope"></i> info@salonbliss.com</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Opening Hours</h3>
+                    <p>Monday-Friday: 9am - 8pm</p>
+                    <p>Saturday: 10am - 6pm</p>
+                    <p>Sunday: Closed</p>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2025 Salon Bliss. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeIn 1s forwards`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe service cards and about section
+            document.querySelectorAll('.service-card, .about-img, .about-text').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
