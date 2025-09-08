@@ -15,8 +15,8 @@ A responsive and modern website for managing salon services, showcasing styles, 
 2.🛠️ Technologies Used
 
    -HTML5– Structure of the website
-      -CSS3– Styling and layout
-   -   JavaScript – Interactivity and form validation
+   -CSS3– Styling and layout
+   -JavaScript – Interactivity and form validation
 
  3.🚀 Installation & Setup
 
