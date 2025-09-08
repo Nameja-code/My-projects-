@@ -1,2 +1,1 @@
-# My-projects-
-Salon web development 
+Salon Website project showcasing modern web design with service listings and appointment booking.
