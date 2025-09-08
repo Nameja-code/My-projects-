@@ -40,4 +40,4 @@ Pull requests are welcome. For major changes, please open an issue first to disc
 
 Developed by Susan Nameja
 
-Email: [susannameja1908@hmail.com]
+Email: [susannameja1908@gmail.com]
