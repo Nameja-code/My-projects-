@@ -50,8 +50,13 @@
         }
         
         .logo {
-            height: 60px;
-            width: 60px;
+            height: 70px;
+            width: 70px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
             object-fit: contain;
             transition: transform 0.3s;
         }
@@ -59,6 +64,7 @@
         .logo:hover {
             transform: scale(1.05);
         }
+      
         
         .nav-links {
             display: flex;
@@ -107,6 +113,7 @@
             font-size: 24px;
             color: #5d4037;
             padding: 10px;
+            z-index: 101;
         }
         
         /* Hero Section */
@@ -154,12 +161,15 @@
             box-shadow: 0 4px 15px rgba(200, 165, 140, 0.3);
             text-transform: uppercase;
             letter-spacing: 1px;
+            border: none;
+            cursor: pointer;
         }
         
         .btn:hover {
             background: #b39178;
             transform: translateY(-3px);
             box-shadow: 0 6px 20px rgba(200, 165, 140, 0.4);
+            text-decoration: none;
         }
         
         /* Services Section */
@@ -434,7 +444,6 @@
             
             .hamburger {
                 display: block;
-                z-index: 101;
             }
             
             .nav-links {
@@ -471,6 +480,14 @@
                 font-size: 18px;
             }
             
+            .nav-links a.btn {
+                margin: 20px auto;
+                padding: 12px 30px;
+                text-align: center;
+                width: fit-content;
+                text-decoration: none;
+            }
+            
             .logo {
                 margin-bottom: 0;
                 height: 50px;
@@ -489,7 +506,7 @@
                 font-size: 1.2rem;
             }
             
-            .about-content, .editor-container {
+            .about-content {
                 grid-template-columns: 1fr;
             }
             
@@ -504,18 +521,6 @@
             .services {
                 grid-template-columns: 1fr;
                 gap: 30px;
-            }
-            
-            /* Close button for mobile menu */
-            .close-menu {
-                position: absolute;
-                top: 20px;
-                right: 20px;
-                background: none;
-                border: none;
-                font-size: 24px;
-                color: #5d4037;
-                cursor: pointer;
             }
         }
         
@@ -556,9 +561,9 @@
         <div class="container">
             <nav class="navbar">
                 <div class="logo-container">
-                    <a href="#" class="logo">
-                        <img src="Logo6.png" alt="Salon Bliss Logo" class="logo">
+                    <img src="Logo6.png" alt="Salon Bliss Logo" class="logo">
                     </a>
+                    
                 </div>
                 
                 <button class="hamburger" id="hamburger">
@@ -566,14 +571,10 @@
                 </button>
                 
                 <ul class="nav-links" id="navLinks">
-                    <button class="close-menu" id="closeMenu">
-                        <i class="fas fa-times"></i>
-                    </button>
                     <li><a href="#">Home</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#about">About</a></li>
-                    <li><a href="#contact">Contact</a></li>
-                    <li><a href="#book" class="btn">Book Now</a></li>
+                    <li><a href="#contact" class="btn">Book Now</a></li>
                 </ul>
             </nav>
         </div>
@@ -597,7 +598,7 @@
             </div>
             <div class="services">
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('hair.jpeg');"></div>
+                    <div class="service-img" style="background-image: url(hair.jpeg);"></div>
                     <div class="service-content">
                         <h3>Hair Styling</h3>
                         <p>Professional haircuts, coloring, and styling from our expert stylists</p>
@@ -605,7 +606,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('french.jpeg');"></div>
+                    <div class="service-img" style="background-image: url(french.jpeg);"></div>
                     <div class="service-content">
                         <h3>Manicure & Pedicure</h3>
                         <p>Luxurious nail treatments with premium products for hands and feet.</p>
@@ -613,7 +614,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('less.jpeg');"></div>
+                    <div class="service-img" style="background-image: url(less.jpeg);"></div>
                     <div class="service-content">
                         <h3>Hairdressing</h3>
                         <p>We provide luxurious hairstyling, cutting, and treating hair to enhance beauty and confidence.</p>
@@ -621,7 +622,7 @@
                     </div>
                 </div>
                 <div class="service-card">
-                    <div class="service-img" style="background-image: url('face.jpeg');"></div>
+                    <div class="service-img" style="background-image: url(face.jpeg);"></div>
                     <div class="service-content">
                         <h3>Facial Treatments</h3>
                         <p>Rejuvenating facials tailored to your skin type and concerns.</p>
@@ -689,24 +690,24 @@
     <script>
         // Mobile menu functionality
         const hamburger = document.getElementById('hamburger');
-        const closeMenu = document.getElementById('closeMenu');
         const navLinks = document.getElementById('navLinks');
         
         hamburger.addEventListener('click', () => {
-            navLinks.classList.add('active');
-            document.body.style.overflow = 'hidden'; // Prevent scrolling when menu is open
-        });
-        
-        closeMenu.addEventListener('click', () => {
-            navLinks.classList.remove('active');
-            document.body.style.overflow = ''; // Re-enable scrolling
+            navLinks.classList.toggle('active');
+            
+            // Change icon based on menu state
+            if (navLinks.classList.contains('active')) {
+                hamburger.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
         });
         
         // Close menu when clicking on a link
         document.querySelectorAll('.nav-links a').forEach(link => {
             link.addEventListener('click', () => {
                 navLinks.classList.remove('active');
-                document.body.style.overflow = '';
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
             });
         });
         
