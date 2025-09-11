@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon Bliss - Gallery</title>
+  <link rel="stylesheet" href="Style.css">
+  <style>
+    .gallery {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      margin-top: 50px;
+    }
+    .gallery img {
+      width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s ease;
+    }
+    .gallery img:hover {
+      transform: scale(1.05);
+    }
+  </style>
+</head>
+<body>
+  <!-- Include Common Header -->
+  <!-- Copy Header Here -->
+  <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="Logo6.png" alt="Salon Bliss Logo" class="logo">
+                    </a>
+                    
+                </div>
+                
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact" class="btn">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+  <!-- Gallery Section -->
+  <section class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Gallery</h2>
+        <p>Take a look at some of our amazing transformations and happy clients</p>
+      </div>
+      <div class="gallery">
+        <img src="hair.jpeg" alt="Hair Styling">
+        <img src="french.jpeg" alt="Nail Care">
+        <img src="face.jpeg" alt="Facial Treatment">
+        <img src="less.jpeg" alt="Hairdressing">
+      </div>
+    </div>
+  </section>
+
+  <footer id="contact">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Salon Bliss</h3>
+        <p>Providing premium beauty services since 2015. Our mission is to enhance your natural beauty and boost your confidence.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Nairobi, City</p>
+        <p><i class="fas fa-phone"></i> 0748362035</p>
+        <p><i class="fas fa-envelope"></i> info@salonbliss.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Opening Hours</h3>
+        <p>Monday-Friday: 9am - 8pm</p>
+        <p>Saturday: 10am - 6pm</p>
+        <p>Sunday: Closed</p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Salon Bliss. All Rights Reserved.
+    </div>
+  </div>
+</footer>  
+  <!-- Copy Footer Here -->
+</body>
+</html>

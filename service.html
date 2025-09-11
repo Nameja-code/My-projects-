@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Salon Bliss - Services</title>
+  <link rel="stylesheet" href="Style.css"> <!-- Link same CSS file -->
+</head>
+<body>
+  <!-- Include Common Header -->
+  <!-- Copy Header Here --><!-- Header -->
+    <header>
+        <div class="container">
+            <nav class="navbar">
+                <div class="logo-container">
+                    <img src="Logo6.png" alt="Salon Bliss Logo" class="logo">
+                    </a>
+                    
+                </div>
+                
+                <button class="hamburger" id="hamburger">
+                    <i class="fas fa-bars"></i>
+                </button>
+                
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#">Home</a></li>
+                    <li><a href="service.html">Services</a></li>
+                    <li><a href="#about">About</a></li>
+                     <li><a href="gallery.html">Gallery</a></li>
+                    <li><a href="#contact" class="btn">Book Now</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+
+  <!-- Services Section -->
+  <section id="services" class="section">
+    <div class="container">
+      <div class="section-title">
+        <h2>Our Premium Services</h2>
+        <p>Indulge in our wide range of beauty treatments.</p>
+      </div>
+      <div class="services">
+        <div class="service-card">
+          <div class="service-img" style="background-image: url(hair.jpeg);"></div>
+          <div class="service-content">
+            <h3>Hair Styling</h3>
+            <p>Professional haircuts, coloring, and styling.</p>
+            <span class="price">From Ksh. 500</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img" style="background-image: url(french.jpeg);"></div>
+          <div class="service-content">
+            <h3>Manicure & Pedicure</h3>
+            <p>Luxurious nail treatments for hands and feet.</p>
+            <span class="price">From Ksh. 500</span>
+          </div>
+        </div>
+        <div class="service-card">
+          <div class="service-img" style="background-image: url(face.jpeg);"></div>
+          <div class="service-content">
+            <h3>Facial Treatments</h3>
+            <p>Rejuvenating facials tailored to your skin type.</p>
+            <span class="price">From Ksh. 500</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Include Common Footer -->
+  <footer id="contact">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>Salon Bliss</h3>
+        <p>Providing premium beauty services since 2015. Our mission is to enhance your natural beauty and boost your confidence.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Contact Us</h3>
+        <p><i class="fas fa-map-marker-alt"></i> Nairobi, City</p>
+        <p><i class="fas fa-phone"></i> 0748362035</p>
+        <p><i class="fas fa-envelope"></i> info@salonbliss.com</p>
+      </div>
+      <div class="footer-section">
+        <h3>Opening Hours</h3>
+        <p>Monday-Friday: 9am - 8pm</p>
+        <p>Saturday: 10am - 6pm</p>
+        <p>Sunday: Closed</p>
+      </div>
+    </div>
+    <div class="copyright">
+      &copy; 2025 Salon Bliss. All Rights Reserved.
+    </div>
+  </div>
+</footer> 
+    <script>
+        // Mobile menu functionality
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        
+        hamburger.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+            
+            // Change icon based on menu state
+            if (navLinks.classList.contains('active')) {
+                hamburger.innerHTML = '<i class="fas fa-times"></i>';
+            } else {
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            }
+        });
+        
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                hamburger.innerHTML = '<i class="fas fa-bars"></i>';
+            });
+        });
+        
+        // Simple animation for elements when they come into view
+        document.addEventListener('DOMContentLoaded', function() {
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.animation = `fadeIn 1s forwards`;
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            // Observe service cards and about section
+            document.querySelectorAll('.service-card, .about-img, .about-text').forEach(el => {
+                el.style.opacity = '0';
+                observer.observe(el);
+            });
+            
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    
+                    const targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 100,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
